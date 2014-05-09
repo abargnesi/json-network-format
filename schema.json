@@ -1,0 +1,134 @@
+{   
+    "$schema": "http://json-schema.org/draft-03/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "description": {
+            "type": ["string", "null"]
+        },
+        "species": {
+            "type": ["integer", "string", "null"]
+        },
+        "reference_node": {
+            "type": ["string", "null"]
+        },
+        "metadata": {
+            "type": ["object", "null"]
+        },
+        "nodes": {
+            "type": ["array", "null"],
+            "items": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "label": {
+                            "type": "string"
+                        },
+                        "xloc": {
+                            "type": ["number", "null"]
+                        },
+                        "yloc": {
+                            "type": ["number", "null"]
+                        },
+                        "metadata": {
+                            "type": ["object", "null"]
+                        }
+                    },
+                    "required": ["id", "label"]
+                }
+            ]
+        },
+        "edges": {
+            "type": ["array", "null"],
+            "items": [
+                {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "src": {
+                            "type": "integer"
+                        },
+                        "tgt": {
+                            "type": "integer"
+                        },
+                        "rel": {
+                            "type": "string"
+                        },
+                        "metadata": {
+                            "type": ["object", "null"]
+                        },
+                        "evidence": {
+                            "type": ["array", "null"],
+                            "items": [
+                                {
+                                    "type": "object",
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "biological_context": {
+                                            "type": ["object", "null"],
+                                            "additionalProperties": {
+                                                "type": [
+                                                    "boolean",
+                                                    "number",
+                                                    "string",
+                                                    "array"
+                                                ]
+                                            }
+                                        },
+                                        "citation": {
+                                            "type": ["object", "null"],
+                                            "properties": {
+                                                "reference": {
+                                                    "type": "string"
+                                                },
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string"
+                                                },
+                                                "date": {
+                                                    "type": [
+                                                        "string", "null"
+                                                    ]
+                                                },
+                                                "authors": {
+                                                    "type": [
+                                                        "string", "null"
+                                                    ]
+                                                },
+                                                "comments": {
+                                                    "type": [
+                                                        "string", "null"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "reference", "type", "name"
+                                            ]
+                                        },
+                                        "bel_statement": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "bel_statement"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    "required": ["src", "tgt", "rel"]
+                }
+            ]
+        }
+    },
+    "required": ["name"]
+}
