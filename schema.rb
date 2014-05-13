@@ -8,6 +8,7 @@ unless schema_errors.empty?
   exit 1
 end
 
+JSON::Validator.fully_validate_schema('schema.json').each { |x| puts x }
 json_data = (STDIN.tty?) ? File.read(ARGV[0]) : STDIN.read
 if json_data
   puts JSON::Validator.validate_json('schema.json', json_data)
